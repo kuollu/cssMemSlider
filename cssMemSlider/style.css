@@ -1,76 +1,105 @@
 body {
-   background-color: snow;
+   background-color: rgb(242, 245, 244);
    background-size: cover;
 }
 
-* {
-   margin: 0;
-   padding: 0;
-   box-sizing: border-box;
-}
+
 
 .main-cont {
-   width: 700px;
-   height: 350px;
-   margin: 100px auto 0;
+   width: 900px;
+   height: 500px;
+   margin: 0 auto 0;
    position: relative;
-   border: solid;
+   overflow: hidden;
+   padding: 50px;
+   background-color: chocolate;
 }
 
 .slider {
    width: 100%;
    height: 100%;
-   overflow: hidden;
    position: relative;
-   background-color: blueviolet;
+   background-color: rgb(255, 255, 255);
 }
 
-.main-cont > input {
-   display: none;
+.main-cont-box{
+   width: 99%;
+   height: 500px;
+   border: solid;
+   position: relative;
+}
+
+.meme-text {
+   position: absolute;
+   bottom: -35px;
+   margin: 0 auto;
+   font-size: 14px
 }
 
 .meme {
    position: absolute;
    width: 100%;
-   height: 100%;
+   height: 500px;
    background-size: cover;
    z-index: 0;
    opacity: 0;
-   transform: scale(1.5);
+   transform: translateX(200px);
    transition: transform ease-in-out .3s, opacity ease-in-out .3s;
 }
 
-.slide-one {
+.meme-img {
+   width: 100%;
+   height: 100%;
+   background-repeat: no-repeat;
+   background-size: cover;
+}
+
+.slide-one .meme-img {
    background-image: url(/cssMemSlider/cssMemSlider/assets/ZHdun-1-Memy.jpg);
 }
 
-.slide-two {
+.slide-two .meme-img{
    background-image: url(/cssMemSlider/cssMemSlider/assets/4pbyxv.jpg);
 }
 
-.slide-three {
-   background-image: url(/cssMemSlider/cssMemSlider/assets/wat.jpg);
+.slide-three .meme-img{
+   background-image: url(/cssMemSlider/cssMemSlider/assets/bigpicture_ru_muzhik-s-peskom-shablon.jpg);
 }
 
-.slide-four {
-   background-image: url(/cssMemSlider/cssMemSlider/assets/v-mire-grustit-odin-kotik_130964540_orig_.jpg)
+.slide-four .meme-img{
+   background-image: url(/cssMemSlider/cssMemSlider/assets/maxresdefault.jpg)
+}
+
+.main-cont-box >input {
+   display: none;
 }
 
 .main-cont .buttons {
    position: absolute;
-   left: 90%;
-   margin-left: -98px;
+   right: 0;
+   margin-top: 20px;
+   width: fit-content;
+   display: flex;
+   align-items: center;
 }
 
 .main-cont label {
    cursor: pointer;
    display: inline-block;
    position: relative;
-   width: 5px;
-   height: 5px;
-   margin: 25px 15px 0 15px;
+   width: 14px;
+   height: 14px;
+   margin: 0 25px 0 0;
    border-radius: 50%;
    transition: background ease-in-out .3s;
+}
+
+.main-cont label:last-of-type {
+   margin: 0;
+}
+
+.main-cont label:hover {
+   opacity: 0.5;
 }
 
 .main-cont label:after {
@@ -80,21 +109,67 @@ body {
    border: 2px solid black;
    border-radius: 50%;
    display: block;
-   content: " "
+   content: " ";
 }
 
-.main-cont:hover, #slide-one:checked ~ .buttons label:nth-of-type(1),
-#slide-two:checked ~ .buttons label:nth-of-type(2),
-#slide-three:checked ~ .buttons label:nth-of-type(3),
-#slide-four:checked ~ .buttons label:nth-of-type(4), {
+#slide-one:checked~.buttons label:nth-of-type(1),
+#slide-two:checked~.buttons label:nth-of-type(2),
+#slide-three:checked~.buttons label:nth-of-type(3),
+#slide-four:checked~.buttons label:nth-of-type(4) {
    background: #000000;
 }
 
-#slide-one:checked ~ main-cont > .slide-one,
-#slide-two:checked ~ main-cont > .slide-two,
-#slide-three:checked ~ main-cont > .slide-three,
-#slide-four:checked ~ main-cont > .slide-four {
+#slide-one:checked~.slider>.slide-one,
+#slide-two:checked~.slider>.slide-two,
+#slide-three:checked~.slider>.slide-three,
+#slide-four:checked~.slider>.slide-four {
    opacity: 1;
    z-index: 1;
    transform: scale(1);
+}
+
+@media screen and (max-width: 1000px) {
+   
+   .main-cont {
+      width: 90vw;
+      height: 50vw;
+      padding: 5vw;
+   }
+
+   .main-cont-box{
+      height: 50vw;
+   }
+
+   .meme {
+      position: absolute;
+      height: 50vw;
+      transform: translateX(20vw);
+   }
+
+   .meme-text {
+      bottom: -3.5vw;
+      font-size: 2.8vw;
+   }
+
+
+   
+   .main-cont .buttons {
+      margin-top: 2vw;
+   }
+
+   .main-cont label {
+      width: 1.4vw;
+      height: 1.4vw;
+      margin: 0 2.5vw 0 0;
+   }
+
+   .main-cont label:after {
+      height: 1vw;
+      width: 1vw;
+      border: 0.2vw solid black;
+   }
+}
+
+@media screen and (max-width: 500px) {
+   
 }
